@@ -1,0 +1,8 @@
+{
+  "eqeqeq": true,
+  "expr": true,
+  "ignore": [
+    "./tests/fixtures/bin",
+    "./tests/fixtures/source"
+  ]
+}

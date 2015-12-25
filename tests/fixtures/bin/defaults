@@ -1,0 +1,84 @@
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (babelHelpers){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Bar = function Bar() {
+  babelHelpers.classCallCheck(this, Bar);
+
+  this.name = 'bar';
+};
+
+exports.default = Bar;
+
+}).call(this,require("babel/external-helpers"))
+},{"babel/external-helpers":"babel/external-helpers"}],2:[function(require,module,exports){
+(function (babelHelpers){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bar = require('./bar.es6');
+
+var _bar2 = babelHelpers.interopRequireDefault(_bar);
+
+var Foo = (function (_Bar) {
+  babelHelpers.inherits(Foo, _Bar);
+
+  function Foo() {
+    babelHelpers.classCallCheck(this, Foo);
+    return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Foo).call(this));
+  }
+
+  return Foo;
+})(_bar2.default);
+
+exports.default = Foo;
+
+}).call(this,require("babel/external-helpers"))
+},{"./bar.es6":1,"babel/external-helpers":"babel/external-helpers"}],"babel/external-helpers":[function(require,module,exports){
+var global = self = {}; (function (global) {
+  var babelHelpers = global.babelHelpers = {};
+
+  babelHelpers.classCallCheck = function (instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  };
+
+  babelHelpers.inherits = function (subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  };
+
+  babelHelpers.interopRequireDefault = function (obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  };
+
+  babelHelpers.possibleConstructorReturn = function (self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  };
+})(typeof global === "undefined" ? self : global); module.exports = self.babelHelpers;
+},{}]},{},[2]);
