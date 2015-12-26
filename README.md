@@ -1,4 +1,4 @@
-# External Babel Helper Packager
+# External Babel Helper Packager [![Build Status](https://travis-ci.org/rstone770/babelify-external-helpers.svg?branch=master)](https://travis-ci.org/rstone770/babelify-external-helpers)
 
 A [Browserify](http://browserify.org/) plugin that when used in conjunction with [Babelify](https://github.com/babel/babelify) will package all required external helpers into a single module and include it into your bundle.
 
