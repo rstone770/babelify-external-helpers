@@ -48,8 +48,7 @@ var register = function (gulp, config) {
   gulp.task('test', function () {
     return gulp.src(tests)
       .pipe(mocha(mochaConfig))
-      .once('error', exit(1))
-      .once('end', exit(0));
+      .once('error', exit(1));
   });
 };
 

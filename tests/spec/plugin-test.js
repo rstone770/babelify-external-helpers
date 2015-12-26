@@ -4,6 +4,7 @@ var babelify = require('babelify'),
     util = require('util');
 
 describe('babel-external-helpers', function () {
+  this.timeout(10000);
 
   /**
    * Common test fixtures.
@@ -63,7 +64,7 @@ describe('babel-external-helpers', function () {
     return createBundler(file, ['es2015'], ['external-helpers-2']);
   };
 
-  it('should by default, include package external modules within the bundle.', function (done) {
+  it('should include external helpers as a module within the bundle.', function (done) {
     var source = fixture.path('source/defaults/foo.es6'),
         expected = fixture.read('bin/defaults'),
         bundler = createIdealBundler(source).plugin(plugin);
