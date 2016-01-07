@@ -12,7 +12,7 @@ var Foo = exports.Foo = function Foo() {
 
 }).call(this,require("mittens"))
 },{"mittens":"mittens"}],"mittens":[function(require,module,exports){
-var global = self = {}; (function (global) {
+var global = {}; (function (global) {
   var babelHelpers = global.babelHelpers = {};
 
   babelHelpers.classCallCheck = function (instance, Constructor) {
@@ -20,5 +20,5 @@ var global = self = {}; (function (global) {
       throw new TypeError("Cannot call a class as a function");
     }
   };
-})(typeof global === "undefined" ? self : global); module.exports = self.babelHelpers;
+})(typeof global === "undefined" ? self : global); module.exports = global.babelHelpers;
 },{}]},{},[1]);
