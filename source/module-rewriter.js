@@ -12,9 +12,9 @@ var babel = require('babel-core'),
 var generateModule = function (helpers) {
   var externalHelpers = babel.buildExternalHelpers(helpers),
       lines = [
-        'var global = self = {};',
+        'var global = {};',
         babel.buildExternalHelpers(helpers),
-        'module.exports = self.babelHelpers;'
+        'module.exports = global.babelHelpers;'
       ];
 
   return lines.join(' ');
