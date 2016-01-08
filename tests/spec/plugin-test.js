@@ -1,5 +1,6 @@
 var babelify = require('babelify'),
     browserify = require('browserify'),
+    es3ify = require('es3ify'),
     expect = require('chai').expect,
     util = require('util');
 
@@ -18,7 +19,13 @@ describe('babel-external-helpers', function () {
    *
    * @return {Function}
    */
-  var plugin = TestCommon.require('index.js');
+  var plugin = TestCommon.require('index.js').plugin;
+
+  var write = function (file, content) {
+    var fs = require('fs');
+
+    fs.writeFileSync(fixture.path(file), content);
+  };
 
   /**
    * Asserts that a browserify bundler produces expected result.
@@ -84,6 +91,14 @@ describe('babel-external-helpers', function () {
     var source = fixture.path('source/defined.es6'),
         expected = fixture.read('bin/defined'),
         bundler = createIdealBundler(source).plugin(plugin);
+
+    assertBundlerProduces(expected, bundler, done);
+  });
+
+  it('should play nice with other transforms.', function (done) {
+    var source = fixture.path('source/es3ify.es6'),
+        expected = fixture.read('bin/es3ify'),
+        bundler = createIdealBundler(source).plugin(plugin).transform(es3ify);
 
     assertBundlerProduces(expected, bundler, done);
   });

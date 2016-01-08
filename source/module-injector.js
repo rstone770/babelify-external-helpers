@@ -91,7 +91,7 @@ ModuleInjector.prototype._createResolver = function () {
 ModuleInjector.prototype._injectModule = function () {
   if (this._hasModule === false) {
     this._browserify.require(this._source, {file: this._name, expose: this._name});
-    this._browserify.ignore(this._name);
+    this._browserify.exclude(this._name);
   }
 
   this._hasModule = true;

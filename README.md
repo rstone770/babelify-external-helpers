@@ -1,6 +1,6 @@
 # External Babel Helper Packager [![Build Status](https://travis-ci.org/rstone770/babelify-external-helpers.svg?branch=master)](https://travis-ci.org/rstone770/babelify-external-helpers)
 
-A [Browserify](http://browserify.org/) plugin that when used in conjunction with [Babelify](https://github.com/babel/babelify) will package all required external helpers into a single module and include it into your bundle.
+A [Browserify](http://browserify.org/) plugin that when used in conjunction with [Babelify](https://github.com/babel/babelify) will package and include babel runtime helpers in your bundle.
 
 ### What?
 
@@ -71,6 +71,8 @@ browserify().plugin('babelify-external-helpers', {
 
 ## Notes
 This plugin has only been tested with the ```es2015``` preset with  the ```external-helpers-2``` plugin. The other presets and plugins should work but if there are issues, please create an issue or submit a pull request.
+
+Currently, all runtime helpers are included when bundling and will add about 6kb to the bundle when minimized and a negligible amount when gzipped.
 
 ## License
 [MIT](LICENSE)

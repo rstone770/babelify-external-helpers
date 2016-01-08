@@ -1,23 +1,16 @@
-var EmptyModule = require('./empty-module-stream'),
+var ModuleStream = require('./external-helpers-module-stream'),
     Injector = require('./module-injector'),
-    Rewriter = require('./module-rewriter'),
     utility = require('./utility');
 
 /**
  * @param {ModuleInjector} injector
- * @param {ModuleRewriter} rewriter
  */
-var BabelifyExternalHelpers = function (injector, rewriter) {
+var BabelifyExternalHelpers = function (injector) {
   if (utility.isNullOrUndefined(injector)) {
     throw 'a compile time module injector must be defined.';
   }
 
-  if (utility.isNullOrUndefined(rewriter)) {
-    throw 'a compile time module rewriter must be defined.';
-  }
-
   this._injector = injector;
-  this._rewriter = rewriter;
 };
 
 /**
@@ -37,12 +30,12 @@ BabelifyExternalHelpers.defaults = {
  * @return {!BabelifyExternalHelpers}
  */
 BabelifyExternalHelpers.create = function (browserify, options) {
-  var name = utility.extend(BabelifyExternalHelpers.defaults, options).name,
-      source = new EmptyModule(browserify),
-      injector = new Injector(browserify, name, source),
-      rewriter = new Rewriter(browserify, name);
+  options = utility.extend(BabelifyExternalHelpers.defaults, options);
 
-  return new BabelifyExternalHelpers(injector, rewriter);
+  var source = new ModuleStream(browserify),
+      injector = new Injector(browserify, options.name, source);
+
+  return new BabelifyExternalHelpers(injector);
 };
 
 /**
@@ -60,7 +53,6 @@ BabelifyExternalHelpers.plugin = function (browserify, options) {
  */
 BabelifyExternalHelpers.prototype.apply = function () {
   this._injector.apply();
-  this._rewriter.apply();
 };
 
-module.exports = BabelifyExternalHelpers.plugin;
+module.exports = BabelifyExternalHelpers;

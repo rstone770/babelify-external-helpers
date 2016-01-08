@@ -1,6 +1,6 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (babelHelpers){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,20 +8,24 @@ Object.defineProperty(exports, "__esModule", {
 
 var Foo = exports.Foo = function Foo() {
   babelHelpers.classCallCheck(this, Foo);
+
+  this["default"] = '';
 };
 
-}).call(this,require("mittens"))
-},{"mittens":"mittens"}],"mittens":[function(require,module,exports){
+;
+
+}).call(this,require("babel/external-helpers"))
+},{"babel/external-helpers":"babel/external-helpers"}],"babel/external-helpers":[function(require,module,exports){
 var global = {}; (function (global) {
   var babelHelpers = global.babelHelpers = {};
-  babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  babelHelpers["typeof"] = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
     return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
   };
 
   babelHelpers.jsx = function () {
-    var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7;
+    var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol["for"] && Symbol["for"]("react.element") || 0xeac7;
     return function createRawReactElement(type, props, key, children) {
       var defaultProps = type && type.defaultProps;
       var childrenLength = arguments.length - 3;
@@ -157,7 +161,7 @@ var global = {}; (function (global) {
     return obj;
   };
 
-  babelHelpers.extends = Object.assign || function (target) {
+  babelHelpers["extends"] = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -212,7 +216,7 @@ var global = {}; (function (global) {
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   };
 
-  babelHelpers.instanceof = function (left, right) {
+  babelHelpers["instanceof"] = function (left, right) {
     if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
       return right[Symbol.hasInstance](left);
     } else {
@@ -222,7 +226,7 @@ var global = {}; (function (global) {
 
   babelHelpers.interopRequireDefault = function (obj) {
     return obj && obj.__esModule ? obj : {
-      default: obj
+      "default": obj
     };
   };
 
@@ -238,7 +242,7 @@ var global = {}; (function (global) {
         }
       }
 
-      newObj.default = obj;
+      newObj["default"] = obj;
       return newObj;
     }
   };
