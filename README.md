@@ -51,7 +51,7 @@ browserify ... -p [babelify-external-helpers --name helpers]
 
 ### Programmatic
 ```javascript
-browserify().plugin('babel-external-helpers', {name: 'helpers'});
+browserify().plugin('babelify-external-helpers', {name: 'helpers'});
 ```
 
 ### Options
